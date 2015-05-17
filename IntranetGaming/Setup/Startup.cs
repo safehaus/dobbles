@@ -1,0 +1,83 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Http.Controllers;
+using Autofac;
+using Autofac.Core;
+using Autofac.Core.Lifetime;
+using Microsoft.Owin.FileSystems;
+using Microsoft.Owin.StaticFiles;
+using Owin;
+
+namespace IntranetGaming.Setup
+{
+    public class Startup
+    {
+
+        public void Configuration(IAppBuilder builder)
+        {
+
+
+            var serviceBuilder = new ContainerBuilder();
+            RegisterComponents(serviceBuilder);
+
+            var serviceContainer = serviceBuilder.Build();
+
+            var configuration = serviceContainer.Resolve<HttpConfiguration>();
+            
+            //enable cors to help with testing/debugging
+            configuration.EnableCors();
+            RegisterRoutes(configuration);
+            RegisterSPAFileshare(builder);
+
+            configuration.DependencyResolver = new AutofacDependencyResolver(serviceContainer);
+        }
+
+        public void RegisterComponents(ContainerBuilder builder)
+        {
+            //Let everything have access to one instance of a configuration
+            builder.Register(ctx => new HttpConfiguration())
+                .SingleInstance()
+                .ExternallyOwned();
+            //reflection to register controllers
+
+            builder.RegisterAssemblyTypes(this.GetType().Assembly)
+                .Where(type => !type.IsAbstract && type.IsAssignableTo<IHttpController>())
+                .InstancePerMatchingLifetimeScope(MatchingScopeLifetimeTags.RequestLifetimeScopeTag);
+
+        }
+
+        public void RegisterRoutes(HttpConfiguration config)
+        {
+            config.Routes.MapHttpRoute("DefaultRoute",
+                "api/{controller}/{action}/{id}",
+                new { action = RouteParameter.Optional, id = RouteParameter.Optional});
+            config.MapHttpAttributeRoutes();
+        }
+
+            
+        public void RegisterSPAFileshare(IAppBuilder app)
+        {
+            PhysicalFileSystem staticFs = new PhysicalFileSystem(Path.Combine(
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                "Web"));
+
+            FileServerOptions fsOptions = new FileServerOptions
+            {
+                FileSystem = staticFs,
+                EnableDefaultFiles = true,
+            };
+
+            fsOptions.StaticFileOptions.FileSystem = staticFs;
+            fsOptions.DefaultFilesOptions.DefaultFileNames = new[] { "index.html" };
+            app.UseFileServer(fsOptions);
+        }
+        
+    }
+}
