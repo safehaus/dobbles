@@ -3,16 +3,16 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Owin.Testing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Safehaus.IntranetGaming.Contract.Fibbage.Responses;
 using Safehaus.IntranetGaming.Setup;
 
 namespace Safehaus.IntranetGaming.Test.ControllerTests
 {
-    [TestClass]
+    [TestFixture()]
     public class RoomControllerTests
     {
-        [TestMethod]
+        [Test()]
         public async Task TestCreateRoom()
         {
             using (var server = TestServer.Create(new Startup().Configuration))
