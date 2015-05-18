@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntranetGaming", "IntranetG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract", "Contract\Contract.csproj", "{E5679DF4-6697-45A3-8DF3-153EC14CA87D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract.Test", "Contract.Test\Contract.Test.csproj", "{CEBFD589-549A-4B99-8CCB-F70C9E47BD34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntranetGaming.Test", "IntranetGaming.Test\IntranetGaming.Test.csproj", "{51B47C61-C67C-4BF6-AC69-F5FEA6A393BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{E5679DF4-6697-45A3-8DF3-153EC14CA87D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5679DF4-6697-45A3-8DF3-153EC14CA87D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5679DF4-6697-45A3-8DF3-153EC14CA87D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEBFD589-549A-4B99-8CCB-F70C9E47BD34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEBFD589-549A-4B99-8CCB-F70C9E47BD34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEBFD589-549A-4B99-8CCB-F70C9E47BD34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEBFD589-549A-4B99-8CCB-F70C9E47BD34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51B47C61-C67C-4BF6-AC69-F5FEA6A393BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51B47C61-C67C-4BF6-AC69-F5FEA6A393BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51B47C61-C67C-4BF6-AC69-F5FEA6A393BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51B47C61-C67C-4BF6-AC69-F5FEA6A393BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

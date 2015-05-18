@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http.Dependencies;
 using Autofac;
 using Autofac.Core.Lifetime;
 
-namespace IntranetGaming.Setup
+namespace Safehaus.IntranetGaming.Setup
 {
     public class AutofacDependencyResolver : IDependencyResolver
     {

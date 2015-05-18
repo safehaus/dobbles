@@ -1,29 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using Autofac;
-using Autofac.Core;
 using Autofac.Core.Lifetime;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using Owin;
 
-namespace IntranetGaming.Setup
+namespace Safehaus.IntranetGaming.Setup
 {
     public class Startup
     {
-
         public void Configuration(IAppBuilder builder)
         {
-
-
             var serviceBuilder = new ContainerBuilder();
             RegisterComponents(serviceBuilder);
 
@@ -37,6 +27,7 @@ namespace IntranetGaming.Setup
             RegisterSPAFileshare(builder);
 
             configuration.DependencyResolver = new AutofacDependencyResolver(serviceContainer);
+            ObjectMappings.MapObjects();
         }
 
         public void RegisterComponents(ContainerBuilder builder)

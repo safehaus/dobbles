@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Owin.Hosting;
-using IntranetGaming.Setup;
-using Owin;
+using Safehaus.IntranetGaming.Setup;
 
-namespace IntranetGaming
+namespace Safehaus.IntranetGaming
 {
     public class Program
     {
