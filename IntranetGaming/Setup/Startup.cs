@@ -27,6 +27,7 @@ namespace Safehaus.IntranetGaming.Setup
             RegisterSPAFileshare(builder);
 
             configuration.DependencyResolver = new AutofacDependencyResolver(serviceContainer);
+            builder.UseWebApi(configuration);
             ObjectMappings.MapObjects();
         }
 
@@ -46,9 +47,10 @@ namespace Safehaus.IntranetGaming.Setup
 
         public void RegisterRoutes(HttpConfiguration config)
         {
-            config.Routes.MapHttpRoute("DefaultRoute",
-                "api/{controller}/{action}/{id}",
-                new { action = RouteParameter.Optional, id = RouteParameter.Optional});
+            config.Routes.MapHttpRoute("Default",
+                "api/{controller}/{action}/{id}/{format}",
+                new { action = RouteParameter.Optional, id = RouteParameter.Optional, format = RouteParameter.Optional });
+                
             config.MapHttpAttributeRoutes();
         }
 

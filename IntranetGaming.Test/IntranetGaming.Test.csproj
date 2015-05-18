@@ -44,11 +44,19 @@
     <Reference Include="Microsoft.Owin.Testing">
       <HintPath>..\packages\Microsoft.Owin.Testing.3.0.1\lib\net45\Microsoft.Owin.Testing.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -63,10 +71,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ControllerTests\UnitTest1.cs" />
+    <Compile Include="ControllerTests\RoomControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Contract\Contract.csproj">
+      <Project>{E5679DF4-6697-45A3-8DF3-153EC14CA87D}</Project>
+      <Name>Contract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IntranetGaming\IntranetGaming.csproj">
       <Project>{75340d00-1cfc-4d32-8c74-5df9f770fe38}</Project>
       <Name>IntranetGaming</Name>

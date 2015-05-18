@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AutoMapper;
@@ -11,8 +12,8 @@ namespace Safehaus.IntranetGaming.Controllers
     public class RoomController : ApiController
     {
         private static Dictionary<string, Room> GameToUserMapping = new Dictionary<string, Room>();
-
-
+        
+        [HttpGet]
         [ResponseType(typeof(RoomDetails))]
         public IHttpActionResult Get(string id)
         {
@@ -23,13 +24,15 @@ namespace Safehaus.IntranetGaming.Controllers
             return Ok(Mapper.Map<RoomDetails>(GameToUserMapping[id]));
         }
 
+        [HttpPut]
         [ResponseType(typeof(RoomDetails))]
-        public IHttpActionResult Put()
+        public async Task<IHttpActionResult> Put()
         {
             var newRoomDeatils = new Room();
-            return Ok(newRoomDeatils);
+            return Ok( await Task.FromResult(newRoomDeatils));
         }
 
+        [HttpPost]
         [ResponseType(typeof(RoomDetails))]
         public IHttpActionResult Post(string id, [FromBody]AddToRoomRequest request)
         {
@@ -46,6 +49,7 @@ namespace Safehaus.IntranetGaming.Controllers
             return Ok(Mapper.Map<RoomDetails>(GameToUserMapping[id]));
         }
 
+        [HttpDelete]
         public IHttpActionResult Delete(string id)
         {
             if (!GameToUserMapping.ContainsKey(id))
