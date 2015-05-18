@@ -39,7 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fibbage\Model\Answer.cs" />
+    <Compile Include="Fibbage\Model\Game.cs" />
+    <Compile Include="Fibbage\Model\Question.cs" />
+    <Compile Include="Fibbage\Model\QuestionGenerator.cs" />
     <Compile Include="Fibbage\Model\Room.cs" />
+    <Compile Include="Fibbage\Model\RoundDetails.cs" />
     <Compile Include="Fibbage\Requests\AddToRoomRequest.cs" />
     <Compile Include="Fibbage\Responses\RoomDetails.cs" />
     <Compile Include="Fibbage\Utilities\StringUtilities.cs" />
