@@ -9,7 +9,7 @@ namespace Safehaus.IntranetGaming
         static void Main(string[] args)
         {
             var startOptions = new StartOptions();
-            startOptions.Urls.Add("http://+:80");
+            startOptions.Urls.Add("http://+:8080");
 
             using (WebApp.Start(startOptions, (builder) => new Startup().Configuration(builder, true)))
             {
