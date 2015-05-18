@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Net.Http.Formatting;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Controllers;
@@ -55,6 +56,9 @@ namespace Safehaus.IntranetGaming.Setup
                 new { action = RouteParameter.Optional, id = RouteParameter.Optional, format = RouteParameter.Optional });
                 
             config.MapHttpAttributeRoutes();
+
+            config.Formatters.Clear();
+            config.Formatters.Add(new JsonMediaTypeFormatter());
         }
 
             
