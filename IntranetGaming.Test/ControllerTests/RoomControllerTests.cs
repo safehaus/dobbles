@@ -15,7 +15,7 @@ namespace Safehaus.IntranetGaming.Test.ControllerTests
         [Test()]
         public async Task TestCreateRoom()
         {
-            using (var server = TestServer.Create(new Startup().Configuration))
+            using (var server = TestServer.Create((builder) => new Startup().Configuration(builder, false)))
             {
                 var response = await server.HttpClient.PutAsync("/api/room/", new StringContent(String.Empty));
                 response.EnsureSuccessStatusCode();

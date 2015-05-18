@@ -12,7 +12,7 @@ namespace Safehaus.IntranetGaming.Setup
 {
     public class Startup
     {
-        public void Configuration(IAppBuilder builder)
+        public void Configuration(IAppBuilder builder, bool startFileShare = true)
         {
             var serviceBuilder = new ContainerBuilder();
             RegisterComponents(serviceBuilder);
@@ -24,7 +24,10 @@ namespace Safehaus.IntranetGaming.Setup
             //enable cors to help with testing/debugging
             configuration.EnableCors();
             RegisterRoutes(configuration);
-            RegisterSPAFileshare(builder);
+            if (startFileShare)
+            {
+                RegisterSPAFileshare(builder);
+            }
 
             configuration.DependencyResolver = new AutofacDependencyResolver(serviceContainer);
             builder.UseWebApi(configuration);

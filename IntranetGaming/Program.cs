@@ -11,7 +11,7 @@ namespace Safehaus.IntranetGaming
             var startOptions = new StartOptions();
             startOptions.Urls.Add("http://+:80");
 
-            using (WebApp.Start(startOptions, new Startup().Configuration))
+            using (WebApp.Start(startOptions, (builder) => new Startup().Configuration(builder, true)))
             {
                 Console.WriteLine("Service Started");
                 var input = String.Empty;
