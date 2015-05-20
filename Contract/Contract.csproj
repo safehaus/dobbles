@@ -37,6 +37,18 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Threading.Tasks.Dataflow">
+      <HintPath>..\packages\Microsoft.Tpl.Dataflow.4.5.24\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
+    <Reference Include="vtortola.WebSockets">
+      <HintPath>..\packages\vtortola.WebSocketListener.2.1.7.0\lib\net45\vtortola.WebSockets.dll</HintPath>
+    </Reference>
+    <Reference Include="vtortola.WebSockets.Rfc6455">
+      <HintPath>..\packages\vtortola.WebSocketListener.2.1.7.0\lib\net45\vtortola.WebSockets.Rfc6455.dll</HintPath>
+    </Reference>
+    <Reference Include="vtortola.WebSockets.Deflate">
+      <HintPath>..\packages\vtortola.WebSocketListener.2.1.7.0\lib\net45\vtortola.WebSockets.Deflate.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fibbage\Model\Answer.cs" />
@@ -54,6 +66,7 @@
     <Compile Include="Fibbage\Utilities\StringUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Fibbage\Model\User.cs" />
+    <Compile Include="Sockets\WebSocketPool.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -64,4 +77,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Sockets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>
