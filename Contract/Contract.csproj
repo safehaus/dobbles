@@ -58,6 +58,8 @@
     <Compile Include="Fibbage\Model\Room.cs" />
     <Compile Include="Fibbage\Model\RoundDetails.cs" />
     <Compile Include="Fibbage\Requests\ChooseAnswerRequest.cs" />
+    <Compile Include="Fibbage\Requests\CreateUserRequest.cs" />
+    <Compile Include="Fibbage\Responses\CreateUserResponse.cs" />
     <Compile Include="Shared\AddToRoomRequest.cs" />
     <Compile Include="Fibbage\Requests\CreateAnswerRequest.cs" />
     <Compile Include="Fibbage\Responses\ChooseAnswerPhaseDetails.cs" />
@@ -77,9 +79,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <Folder Include="Sockets\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

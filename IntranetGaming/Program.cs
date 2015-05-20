@@ -5,6 +5,7 @@ using Microsoft.Owin.Hosting;
 using Safehaus.IntranetGaming.Contract;
 using Safehaus.IntranetGaming.Setup;
 using vtortola.WebSockets;
+using WebSocket = vtortola.WebSockets.WebSocket;
 
 
 namespace Safehaus.IntranetGaming
