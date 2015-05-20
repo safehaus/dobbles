@@ -6,57 +6,59 @@ using AutoMapper;
 using Safehaus.IntranetGaming.Contract.Fibbage.Model;
 using Safehaus.IntranetGaming.Contract.Fibbage.Requests;
 using Safehaus.IntranetGaming.Contract.Fibbage.Responses;
+using Safehaus.IntranetGaming.Contract.Shared;
+using Safehaus.IntranetGaming.DataLayer;
 
 namespace Safehaus.IntranetGaming.Controllers
 {
     public class RoomController : ApiController
     {
-        private static Dictionary<string, Room> GameToUserMapping = new Dictionary<string, Room>();
-        
+        private IRoomDataLayer RoomDataLayer;
+        public RoomController(IRoomDataLayer dataLayer)
+        {
+            RoomDataLayer = dataLayer;
+        }
+
         [HttpGet]
         [ResponseType(typeof(RoomDetails))]
-        public IHttpActionResult Get(string id)
+        public async Task<IHttpActionResult> Get(string id)
         {
-            if (!GameToUserMapping.ContainsKey(id))
+            var room = await RoomDataLayer.GetRoomAsync(id);
+            if (room == null)
             {
                 return NotFound();
             }
-            return Ok(Mapper.Map<RoomDetails>(GameToUserMapping[id]));
+            return Ok(Mapper.Map<RoomDetails>(room));
         }
 
         [HttpPut]
         [ResponseType(typeof(RoomDetails))]
         public async Task<IHttpActionResult> Put()
         {
-            var newRoomDeatils = new Room();
-            return Ok( await Task.FromResult(newRoomDeatils));
+            var newRoom = await RoomDataLayer.CreateRoomAsync();
+            return Ok( await Task.FromResult(newRoom));
         }
 
         [HttpPost]
         [ResponseType(typeof(RoomDetails))]
-        public IHttpActionResult Post(string id, [FromBody]AddToRoomRequest request)
+        public async Task<IHttpActionResult> Post(string id, [FromBody]AddToRoomRequest request)
         {
-            if (!GameToUserMapping.ContainsKey(id))
+            var room = await RoomDataLayer.AddUserToRoomAsync(id, request.User);
+            if (room == null)
             {
                 return NotFound();
             }
-            var user = new User()
-            {
-                UserId = request.UserId,
-                UserName = request.UserName
-            };
-            GameToUserMapping[id].AddUserToRoom(user);
-            return Ok(Mapper.Map<RoomDetails>(GameToUserMapping[id]));
+            return Ok(Mapper.Map<RoomDetails>(room));
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete(string id)
+        public async Task<IHttpActionResult> Delete(string id)
         {
-            if (!GameToUserMapping.ContainsKey(id))
+            var deleteSuccess = await RoomDataLayer.DeleteRoomAsync(id);
+            if (!deleteSuccess)
             {
                 return NotFound();
             }
-            GameToUserMapping.Remove(id);
             return Ok();
         }
     }

@@ -89,10 +89,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="DataLayer\IGameDataLayer.cs" />
+    <Compile Include="DataLayer\InMemory\GameInMemoryDataLayer.cs" />
+    <Compile Include="DataLayer\InMemory\RoomInMemoryDataLayer.cs" />
+    <Compile Include="DataLayer\IRoomDataLayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup\AutofacDependencyResolver.cs" />
+    <Compile Include="Setup\InMemoryDataLayerAutofacModule.cs" />
     <Compile Include="Setup\ObjectMappings.cs" />
     <Compile Include="Setup\Startup.cs" />
   </ItemGroup>
