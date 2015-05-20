@@ -6,25 +6,35 @@ using System.Threading.Tasks;
 
 namespace Safehaus.IntranetGaming.Contract.Fibbage.Model
 {
+    public enum RoundState
+    {
+        CreateGuessPhase,
+        AnswerPhase
+    }
+
     public class RoundDetails
     {
+        public RoundState RoundState { get; set; }
         private int NumberOfUsers;
         public string RoomId { get; set; }
+        public Question CurrentQuestion { get; set; }
         public List<Answer> Answers { get; set; }
 
         public RoundDetails(int numberUsers, string roomId)
         {
+            RoundState = RoundState.CreateGuessPhase;
             NumberOfUsers = numberUsers;
             RoomId = roomId;
             Answers = new List<Answer>();
+            CurrentQuestion = QuestionGenerator.GetQuestion();
         }
 
-        public bool IsRoundFinished()
+        public bool IsGuessPhaseFinished()
         {
             return Answers.Count() == NumberOfUsers;
         }
 
-        public IEnumerable<string> UsersNamesAnsered()
+        public IEnumerable<string> GetUsersNamesAnsered()
         {
             return Answers.Select(e => e.UserName);
         }
@@ -45,11 +55,13 @@ namespace Safehaus.IntranetGaming.Contract.Fibbage.Model
 
         public IEnumerable<string> GetAnswers()
         {
-            if (!IsRoundFinished())
+            if (!IsGuessPhaseFinished())
             {
                 return new List<string>();
             }
-            return Answers.Select(e => e.AnswerValue);
+            var results = Answers.Select(e => e.AnswerValue).ToList();
+            results.Add(CurrentQuestion.CorrectAnswer);
+            return results;
         }
     }
 }

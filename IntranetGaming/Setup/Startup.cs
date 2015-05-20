@@ -43,6 +43,7 @@ namespace Safehaus.IntranetGaming.Setup
                 .Where(type => !type.IsAbstract && type.IsAssignableTo<IHttpController>())
                 .InstancePerMatchingLifetimeScope(MatchingScopeLifetimeTags.RequestLifetimeScopeTag);
 
+            builder.RegisterModule<InMemoryDataLayerAutofacModule>();
         }
 
         public void RegisterRoutes(HttpConfiguration config)

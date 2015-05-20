@@ -14,7 +14,8 @@ namespace Safehaus.IntranetGaming.Contract.Fibbage.Model
         static QuestionGenerator()
         {
             var guid = Guid.Parse("");
-            Questions.Add(guid, new Question(guid, "The King Of Prussia has a poodle names _____"));
+            Questions.Add(guid, new Question(guid, "The King Of Prussia has a poodle named _____", "yahoo"));
+            Questions.Add(guid, new Question(guid, "The King Of Prussia has a poodle named _____", "whoopie"));
         }
         
         public static Question GetQuestion()

@@ -45,7 +45,11 @@
     <Compile Include="Fibbage\Model\QuestionGenerator.cs" />
     <Compile Include="Fibbage\Model\Room.cs" />
     <Compile Include="Fibbage\Model\RoundDetails.cs" />
-    <Compile Include="Fibbage\Requests\AddToRoomRequest.cs" />
+    <Compile Include="Fibbage\Requests\ChooseAnswerRequest.cs" />
+    <Compile Include="Shared\AddToRoomRequest.cs" />
+    <Compile Include="Fibbage\Requests\CreateAnswerRequest.cs" />
+    <Compile Include="Fibbage\Responses\ChooseAnswerPhaseDetails.cs" />
+    <Compile Include="Fibbage\Responses\CreateAnswerPhaseDetails.cs" />
     <Compile Include="Fibbage\Responses\RoomDetails.cs" />
     <Compile Include="Fibbage\Utilities\StringUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

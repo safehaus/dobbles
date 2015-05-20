@@ -16,25 +16,42 @@ namespace Safehaus.IntranetGaming.Contract.Fibbage.Model
 
     public class Game
     {
+        private Room RoomDetails { get; set; }
         public int RoundNumber { get; private set; }
-        public Guid CurrentQuestion { get; set; }
         public GameState GameState { get; set; }
+        public Dictionary<Guid, int> Score { get; set; }
+
+        public RoundDetails CurrentRoundDetails { get; set; }
         
-        public Game()
+        public Game(Room room)
         {
             GameState = GameState.NotStarted;
             RoundNumber = 0;
+            RoomDetails = room;
+            Score = new Dictionary<Guid, int>();
+            foreach (var user in room.Users)
+            {
+                Score.Add(user.Key, 0);
+            }
+            Start();
         }
 
-        public void Start(Room room)
+        private void Start()
         {
-            RoundNumber = 1;
             GameState = Model.GameState.InProgress;
+            AdvanceRound();
         }
 
-        public string GetQuestion()
+        public void AdvanceRound()
         {
-            return Questions[RoundNumber];
+            RoundNumber++;
+            CurrentRoundDetails = new RoundDetails(RoomDetails.Users.Count, RoomDetails.RoomId);
+        }
+
+
+        public RoundDetails GetCurrentRoundDetails()
+        {
+            return CurrentRoundDetails;
         }
     }
 }
