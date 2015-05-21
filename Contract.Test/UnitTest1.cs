@@ -2,10 +2,10 @@
 
 namespace Safehaus.IntranetGaming.Contract.Test
 {
-	[TestFixture()]
+    [TestFixture()]
     public class UnitTest1
     {
-		[Test()]
+        [Test()]
         public void TestMethod1()
         {
         }
