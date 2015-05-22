@@ -1,0 +1,10 @@
+language: csharp
+solution: IntranetGaming.sln
+mono:
+    - 4.0.0
+install:
+    - nuget restore IntranetGaming.sln
+    - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+script:
+    - xbuild /p:Configuration=Debug IntranetGaming.sln
+    - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./IntranetGaming.Test/bin/Debug/IntranetGaming.Test.dll
