@@ -1,6 +1,9 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Net.Http.Formatting;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using Autofac;
@@ -8,6 +11,8 @@ using Autofac.Core.Lifetime;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using Owin;
+using Safehaus.IntranetGaming.Contract.Shared;
+using Safehaus.IntranetGaming.Contract.Sockets;
 
 namespace Safehaus.IntranetGaming.Setup
 {
@@ -19,7 +24,7 @@ namespace Safehaus.IntranetGaming.Setup
             RegisterComponents(serviceBuilder);
 
             var serviceContainer = serviceBuilder.Build();
-
+            StartServices(serviceContainer);
             var configuration = serviceContainer.Resolve<HttpConfiguration>();
             
             //enable cors to help with testing/debugging
@@ -35,6 +40,15 @@ namespace Safehaus.IntranetGaming.Setup
             ObjectMappings.MapObjects();
         }
 
+        public void StartServices(IContainer container)
+        {
+            var backgroundServices = container.Resolve<IEnumerable<IBackgroundService>>();
+            foreach (var service in backgroundServices)
+            {
+                service.Run();
+            }
+        }
+
         public void RegisterComponents(ContainerBuilder builder)
         {
             //Let everything have access to one instance of a configuration
@@ -48,6 +62,8 @@ namespace Safehaus.IntranetGaming.Setup
                 .InstancePerMatchingLifetimeScope(MatchingScopeLifetimeTags.RequestLifetimeScopeTag);
 
             builder.RegisterModule<InMemoryDataLayerAutofacModule>();
+
+            builder.RegisterModule<SocketManagementAutofacModule>();
         }
 
         public void RegisterRoutes(HttpConfiguration config)
