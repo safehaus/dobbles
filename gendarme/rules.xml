@@ -17,7 +17,7 @@
 		<rules include="*" from="Gendarme.Rules.Serialization.dll" />
 		<rules include="*" from="Gendarme.Rules.Smells.dll"/>
 		<rules include="*" from="Gendarme.Rules.Ui.dll" />
-		<rules include="*" from="Gendarme.Rules.Maintainability.dll"/>
+		<rules include="*" exclude="VariableNamesShouldNotMatchFieldNamesRule" from="Gendarme.Rules.Maintainability.dll"/>
 		<rules include="*" from="Gendarme.Rules.Gendarme.dll"/>
 		<rules include="*" from="Gendarme.Rules.Globalization.dll"/>
 	</ruleset>
