@@ -14,7 +14,7 @@ namespace Safehaus.IntranetGaming
     {
         private static WebSocketPool sockets = new WebSocketPool();
 
-        static void Main(string[] args)
+        static void Main()
         {
             var startOptions = new StartOptions();
             startOptions.Urls.Add("http://+:8080");

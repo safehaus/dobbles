@@ -15,7 +15,7 @@ namespace Safehaus.IntranetGaming.WebSockets
         private CancellationToken serverCancellationToken;
         public SocketManager(CancellationToken serverCancellationToken)
         {
-            
+            this.serverCancellationToken = serverCancellationToken;
         }
 
         public async Task AddSocketConnection(WebSocket socketClient)
