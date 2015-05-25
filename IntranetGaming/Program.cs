@@ -10,7 +10,7 @@ using WebSocket = vtortola.WebSockets.WebSocket;
 
 namespace Safehaus.IntranetGaming
 {
-    public class Program
+    public static class Program
     {
         private static WebSocketPool sockets = new WebSocketPool();
 

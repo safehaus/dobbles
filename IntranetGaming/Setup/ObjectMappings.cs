@@ -5,7 +5,7 @@ using Safehaus.IntranetGaming.Contract.Fibbage.Responses;
 
 namespace Safehaus.IntranetGaming.Setup
 {
-    public class ObjectMappings
+    public static class ObjectMappings
     {
         public static void MapObjects()
         {
