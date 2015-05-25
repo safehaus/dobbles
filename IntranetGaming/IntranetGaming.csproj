@@ -112,7 +112,6 @@
     <Compile Include="Setup\InMemoryDataLayerAutofacModule.cs" />
     <Compile Include="Setup\ObjectMappings.cs" />
     <Compile Include="Setup\Startup.cs" />
-    <Compile Include="Utilities\StringUtilities.cs" />
     <Compile Include="WebSockets\SocketConnection.cs" />
     <Compile Include="WebSockets\SocketManager.cs" />
   </ItemGroup>
@@ -154,4 +153,7 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <Folder Include="Utilities\" />
+  </ItemGroup>
 </Project>

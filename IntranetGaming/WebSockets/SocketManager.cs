@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Safehaus.IntranetGaming.Contract.Fibbage.Requests;
 using Safehaus.IntranetGaming.Contract.Fibbage.Responses;
-using Safehaus.IntranetGaming.Utilities;
 using vtortola.WebSockets;
 using Newtonsoft.Json;
 
@@ -32,7 +31,7 @@ namespace Safehaus.IntranetGaming.WebSockets
             userCreationResponse.UserId = userId;
             
             //TODO: add proper cancellation token management
-            await socketClient.WriteStringAsync(userCreationResponse.ToJsonString(), CancellationToken.None);
+            await socketClient.WriteStringAsync(JsonConvert.SerializeObject(userCreationResponse), CancellationToken.None);
 
         }
 
