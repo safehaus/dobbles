@@ -14,7 +14,6 @@ namespace Safehaus.IntranetGaming.Setup
         public AutofacDependencyResolver(ILifetimeScope container)
         {
             this.container = container;
-            disposed = false;
         }
 
         public object GetService(Type serviceType)
