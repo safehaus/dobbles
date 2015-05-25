@@ -9,19 +9,31 @@ namespace Safehaus.IntranetGaming.Setup
     public class AutofacDependencyResolver : IDependencyResolver
     {
         private ILifetimeScope container;
+        private bool disposed;
         
         public AutofacDependencyResolver(ILifetimeScope container)
         {
             this.container = container;
+            disposed = false;
         }
 
         public object GetService(Type serviceType)
         {
+            if (disposed)
+            {
+                throw new ObjectDisposedException(GetType().Name);
+            }
+
             return container.ResolveOptional(serviceType);
         }
 
         public IEnumerable<object> GetServices(Type serviceType)
         {
+            if (disposed)
+            {
+                throw new ObjectDisposedException(GetType().Name);
+            }
+
             if (container.IsRegistered(serviceType))
             {
                 Type resolveItems = typeof(IEnumerable<>).MakeGenericType(serviceType);
@@ -35,13 +47,22 @@ namespace Safehaus.IntranetGaming.Setup
 
         public IDependencyScope BeginScope()
         {
+            if (disposed)
+            {
+                throw new ObjectDisposedException(GetType().Name);
+            }
+
             return new AutofacDependencyResolver(
                 container.BeginLifetimeScope(MatchingScopeLifetimeTags.RequestLifetimeScopeTag));
         }
 
         public void Dispose()
         {
-            container.Dispose();
+            if (!disposed)
+            {
+                container.Dispose();
+                disposed = true;
+            }
         }
     }
 }
