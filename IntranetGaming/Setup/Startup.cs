@@ -3,6 +3,7 @@ using System.Net.Http.Formatting;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Controllers;
+using System.Diagnostics.CodeAnalysis;
 using Autofac;
 using Autofac.Core.Lifetime;
 using Microsoft.Owin.FileSystems;
@@ -50,6 +51,7 @@ namespace Safehaus.IntranetGaming.Setup
             builder.RegisterModule<InMemoryDataLayerAutofacModule>();
         }
 
+        [SuppressMessage ("Gendarme.Rules.Correctness", "CheckParametersNullityInVisibleMethodsRule")]
         public static void RegisterRoutes(HttpConfiguration config)
         {
             config.Routes.MapHttpRoute("Default",
