@@ -2,7 +2,7 @@
 	<ruleset name="self-test">
 		<rules include="*" from="Gendarme.Rules.BadPractice.dll"/>
 		<rules include="*" from="Gendarme.Rules.Concurrency.dll" />
-		<rules include="*" from="Gendarme.Rules.Correctness.dll"/>
+		<rules include="*" exclude="EnsureLocalDisposalRule" from="Gendarme.Rules.Correctness.dll"/>
 		<rules include="*" exclude="MarkAssemblyWithCLSCompliantRule | AvoidSmallNamespaceRule" from="Gendarme.Rules.Design.dll"/>
 		<rules include="*" from="Gendarme.Rules.Design.Generic.dll"/>
 		<rules include="*" exclude="AvoidExtensionMethodOnSystemObjectRule" from="Gendarme.Rules.Design.Linq.dll"/>
