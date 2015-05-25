@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 using Autofac;
 using Safehaus.IntranetGaming.DataLayer;
 using Safehaus.IntranetGaming.DataLayer.InMemory;
 
 namespace Safehaus.IntranetGaming.Setup
 {
+    [SuppressMessage ("Gendarme.Rules.Naming", "UseCorrectPrefixRule")]
     public class InMemoryDataLayerAutofacModule : Module
     {
         protected override void Load(ContainerBuilder builder)
