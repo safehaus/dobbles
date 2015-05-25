@@ -9,7 +9,7 @@
 		<rules include="*" exclude="DoNotSwallowErrorsCatchingNonSpecificExceptionsRule" from="Gendarme.Rules.Exceptions.dll" />
 		<rules include="*" from="Gendarme.Rules.Interoperability.dll"/>
 		<rules include="*" from="Gendarme.Rules.Interoperability.Com.dll"/>
-		<rules include="*" from="Gendarme.Rules.Naming.dll"/>
+		<rules include="*" exclude="UseCorrectPrefixRule" from="Gendarme.Rules.Naming.dll"/>
 		<rules include="*" from="Gendarme.Rules.Performance.dll" />
 		<rules include="*" from="Gendarme.Rules.Portability.dll" />
 		<rules include="*" from="Gendarme.Rules.Security.dll" />
