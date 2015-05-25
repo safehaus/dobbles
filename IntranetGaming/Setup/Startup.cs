@@ -50,7 +50,7 @@ namespace Safehaus.IntranetGaming.Setup
             builder.RegisterModule<InMemoryDataLayerAutofacModule>();
         }
 
-        public void RegisterRoutes(HttpConfiguration config)
+        public static void RegisterRoutes(HttpConfiguration config)
         {
             config.Routes.MapHttpRoute("Default",
                 "api/{controller}/{action}/{id}/{format}",
@@ -63,7 +63,7 @@ namespace Safehaus.IntranetGaming.Setup
         }
 
             
-        public void RegisterSPAFileshare(IAppBuilder app)
+        public static void RegisterSPAFileshare(IAppBuilder app)
         {
             PhysicalFileSystem staticFs = new PhysicalFileSystem(Path.Combine(
                 Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
