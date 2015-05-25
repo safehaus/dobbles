@@ -11,7 +11,7 @@ namespace Safehaus.IntranetGaming.WebSockets
 {
     public class SocketManager
     {
-        public IEnumerable<SocketConnection> SocketConnections;
+        private IEnumerable<SocketConnection> SocketConnections;
         private CancellationToken serverCancellationToken;
         public SocketManager(CancellationToken serverCancellationToken)
         {

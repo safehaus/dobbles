@@ -8,7 +8,7 @@ namespace Safehaus.IntranetGaming.Setup
 {
     public class AutofacDependencyResolver : IDependencyResolver
     {
-        public ILifetimeScope container;
+        private ILifetimeScope container;
         
         public AutofacDependencyResolver(ILifetimeScope container)
         {

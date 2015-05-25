@@ -12,9 +12,9 @@ namespace Safehaus.IntranetGaming.Controllers
 {
     public class GameController : ApiController
     {
-        public static Dictionary<string, Game> Games = new Dictionary<string, Game>();
-        public IGameDataLayer GameDataLayer;
-        public IRoomDataLayer RoomDataLayer;
+        private static Dictionary<string, Game> Games = new Dictionary<string, Game>();
+        private IGameDataLayer GameDataLayer;
+        private IRoomDataLayer RoomDataLayer;
 
         public GameController(IGameDataLayer gameDataLayer, IRoomDataLayer roomDataLayer)
         {
