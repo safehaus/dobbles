@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 using Safehaus.IntranetGaming.Contract.Fibbage.Requests;
 using Safehaus.IntranetGaming.Contract.Fibbage.Responses;
 using vtortola.WebSockets;
@@ -9,6 +10,7 @@ using Newtonsoft.Json;
 
 namespace Safehaus.IntranetGaming.WebSockets
 {
+    [SuppressMessage ("Gendarme.Rules.Performance", "AvoidUnusedPrivateFieldsRule")]
     public class SocketManager
     {
         private IEnumerable<SocketConnection> SocketConnections;
