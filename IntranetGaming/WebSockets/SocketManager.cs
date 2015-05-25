@@ -6,6 +6,7 @@ using Safehaus.IntranetGaming.Contract.Fibbage.Requests;
 using Safehaus.IntranetGaming.Contract.Fibbage.Responses;
 using Safehaus.IntranetGaming.Utilities;
 using vtortola.WebSockets;
+using Newtonsoft.Json;
 
 namespace Safehaus.IntranetGaming.WebSockets
 {
@@ -21,7 +22,7 @@ namespace Safehaus.IntranetGaming.WebSockets
         public async Task AddSocketConnection(WebSocket socketClient)
         {
             var message = await socketClient.ReadStringAsync(serverCancellationToken);
-            var createUserRequest = message.ToObject<CreateUserRequest>();
+            var createUserRequest = JsonConvert.DeserializeObject<CreateUserRequest>(message);
             Guid userId = Guid.Empty;
             if (!Guid.TryParse(createUserRequest.UserId, out userId))
             {
