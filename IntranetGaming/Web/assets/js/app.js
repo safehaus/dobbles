@@ -11,6 +11,11 @@ var api = (function () {
         data.roomCode = roomCode;
       }
     },
+    fib: {
+      send: function (answer) {
+        data.answer = answer;
+      }
+    },
     data: data
   }
 })();
@@ -18,10 +23,24 @@ var api = (function () {
 var Fibbage = React.createClass({
 
   getInitialState: function () {
+    var handleFib = function () {
+      //
+    };
+
+    var handleEveryoneHere = function () {
+      this.setState({
+        screen: EnterFib,
+        props: {
+          onFib: handleFib
+        }
+      });
+    }.bind(this);
+
     var handleJoin = function () {
       this.setState({
         screen: WaitingForPlayers,
         props: {
+          onEveryoneHere: handleEveryoneHere,
           // TODO: get from service (call handleJoin with data)
           playerCount: 1
         }
@@ -65,6 +84,7 @@ var JoinRoom = React.createClass({
 
 var WaitingForPlayers = React.createClass({
   propTypes: {
+    onEveryoneHere: React.PropTypes.func,
     playerCount: React.PropTypes.number.isRequired
   },
 
@@ -73,7 +93,29 @@ var WaitingForPlayers = React.createClass({
       <div>
         <h2>Waiting for players</h2>
         <p>{this.props.playerCount} joined</p>
-        <button>Everyone's here</button>
+        <button onClick={this.props.onEveryoneHere}>Everyone's here</button>
+      </div>
+    );
+  }
+});
+
+var EnterFib = React.createClass({
+  propTypes: {
+    onFib: React.PropTypes.func.isRequired
+  },
+
+  render: function () {
+    var fib = function () {
+      api.fib.send(this.refs.fib.getText());
+      // TODO: iff successful
+      this.props.onFib();
+    }.bind(this);
+
+    return (
+      <div>
+        <h2>Enter your fib</h2>
+        <p>Sample question ___.</p>
+        <TextInput label='Your fib' go='Send' action={fib} ref='fib'/>
       </div>
     );
   }
