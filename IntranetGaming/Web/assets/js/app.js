@@ -2,7 +2,9 @@
 
 var api = (function () {
 
-  var data = {};
+  var data = {
+    question: 'Sample question ___.'
+  };
 
   return {
     room: {
@@ -28,7 +30,7 @@ var Fibbage = React.createClass({
         screen: ChooseAnswer,
         props: {
           // TODO: get from service
-          answers: [api.data.answer]
+          answers: ['answer 1', 'answer 2', api.data.answer]
         }
       });
     }.bind(this);
@@ -133,7 +135,7 @@ var EnterFib = React.createClass({
     return (
       <div>
         <h2>Enter your fib</h2>
-        <p>Sample question ___.</p>
+        <p>{api.data.question}</p>
         <TextInput label='Your fib' go='Send' action={fib} ref='fib'/>
       </div>
     );
@@ -184,6 +186,7 @@ var ChooseAnswer = React.createClass({
     return (
       <div>
         <h2>Choose an answer</h2>
+        <p>{api.data.question}</p>
         {answers}
       </div>
     );
