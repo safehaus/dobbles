@@ -23,9 +23,18 @@ var api = (function () {
 var Fibbage = React.createClass({
 
   getInitialState: function () {
+    var handleAllResponsesHere = function () {
+      console.log('all responses here');
+    }.bind(this);
+
     var handleFib = function () {
-      //
-    };
+      this.setState({
+        screen: WaitingForFibs,
+        props: {
+          onAllResponsesHere: handleAllResponsesHere
+        }
+      });
+    }.bind(this);
 
     var handleEveryoneHere = function () {
       this.setState({
@@ -40,9 +49,7 @@ var Fibbage = React.createClass({
       this.setState({
         screen: WaitingForPlayers,
         props: {
-          onEveryoneHere: handleEveryoneHere,
-          // TODO: get from service (call handleJoin with data)
-          playerCount: 1
+          onEveryoneHere: handleEveryoneHere
         }
       });
     }.bind(this);
@@ -84,15 +91,21 @@ var JoinRoom = React.createClass({
 
 var WaitingForPlayers = React.createClass({
   propTypes: {
-    onEveryoneHere: React.PropTypes.func,
-    playerCount: React.PropTypes.number.isRequired
+    onEveryoneHere: React.PropTypes.func
+  },
+
+  getInitialState: function () {
+    return {
+      // TODO: get from service
+      playerCount: 0,
+    }
   },
 
   render: function () {
     return (
       <div>
         <h2>Waiting for players</h2>
-        <p>{this.props.playerCount} joined</p>
+        <p>{this.state.playerCount} joined</p>
         <button onClick={this.props.onEveryoneHere}>Everyone's here</button>
       </div>
     );
@@ -116,6 +129,38 @@ var EnterFib = React.createClass({
         <h2>Enter your fib</h2>
         <p>Sample question ___.</p>
         <TextInput label='Your fib' go='Send' action={fib} ref='fib'/>
+      </div>
+    );
+  }
+});
+
+var WaitingForFibs = React.createClass({
+  propTypes: {
+    onAllResponsesHere: React.PropTypes.func.isRequired
+  },
+
+  getInitialState: function () {
+    return {
+      playersAnswered: []
+    }
+  },
+
+  componentWillMount: function () {
+    // TODO: get from service
+    setTimeout(function () {
+      this.props.onAllResponsesHere();
+    }.bind(this), 2000);
+  },
+
+  render: function () {
+    playersAnswered = this.state.playersAnswered.map(function (player) {
+      return <p>{player}</p>
+    });
+
+    return (
+      <div>
+        <h2>Waiting for everyone to answer</h2>
+        {playersAnswered}
       </div>
     );
   }
