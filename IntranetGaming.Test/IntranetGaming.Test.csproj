@@ -71,8 +71,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ControllerTests\RoundControllerTests.cs" />
     <Compile Include="ControllerTests\RoomControllerTests.cs" />
     <Compile Include="GameLogicTests.cs" />
+    <Compile Include="IntranetGamingClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

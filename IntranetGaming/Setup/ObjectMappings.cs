@@ -26,6 +26,7 @@ namespace Safehaus.IntranetGaming.Setup
             Mapper.CreateMap<Answer, AnswerMetadata>();
             Mapper.CreateMap<RoundDetails, ChooseAnswerPhaseDetails>()
                 .ForMember(f => f.AnswerOptions, f => f.MapFrom(g => g.GetAnswers()))
+                .ForMember(f => f.Question, f => f.MapFrom(g => g.CurrentQuestion));
         }
 
     }

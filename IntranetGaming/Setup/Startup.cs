@@ -68,11 +68,11 @@ namespace Safehaus.IntranetGaming.Setup
 
         public void RegisterRoutes(HttpConfiguration config)
         {
+            config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute("Default",
                 "api/{controller}/{action}/{id}/{format}",
                 new { action = RouteParameter.Optional, id = RouteParameter.Optional, format = RouteParameter.Optional });
                 
-            config.MapHttpAttributeRoutes();
 
             config.Formatters.Clear();
             config.Formatters.Add(new JsonMediaTypeFormatter());

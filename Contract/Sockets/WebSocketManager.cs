@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Safehaus.IntranetGaming.Contract.Fibbage.Requests;
 using Safehaus.IntranetGaming.Contract.Fibbage.Responses;
-using Safehaus.IntranetGaming.Utilities;
+using Safehaus.IntranetGaming.Contract.Shared;
 using vtortola.WebSockets;
 
 namespace Safehaus.IntranetGaming.Contract.Sockets

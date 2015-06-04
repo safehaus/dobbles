@@ -6,5 +6,10 @@ namespace Safehaus.IntranetGaming.Contract.Fibbage.Model
     {
         public Guid UserId { get; set; }
         public string UserName { get; set; }
+
+        public static User ComputerUser
+        {
+            get { return new User() { UserId = Guid.Empty, UserName = "Computer" }; }
+        }
     }
 }

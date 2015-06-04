@@ -11,6 +11,7 @@ using Safehaus.IntranetGaming.DataLayer;
 
 namespace Safehaus.IntranetGaming.Controllers
 {
+    [RoutePrefix("api/room")]
     public class RoomController : ApiController
     {
         private IRoomDataLayer RoomDataLayer;
@@ -21,6 +22,7 @@ namespace Safehaus.IntranetGaming.Controllers
 
         [HttpGet]
         [ResponseType(typeof(RoomDetails))]
+        [Route("{id}")]
         public async Task<IHttpActionResult> Get(string id)
         {
             var room = await RoomDataLayer.GetRoomAsync(id);
@@ -33,6 +35,7 @@ namespace Safehaus.IntranetGaming.Controllers
 
         [HttpPut]
         [ResponseType(typeof(RoomDetails))]
+        [Route("")]
         public async Task<IHttpActionResult> Put()
         {
             var newRoom = await RoomDataLayer.CreateRoomAsync();
@@ -41,6 +44,7 @@ namespace Safehaus.IntranetGaming.Controllers
 
         [HttpPost]
         [ResponseType(typeof(RoomDetails))]
+        [Route("{id}")]
         public async Task<IHttpActionResult> Post(string id, [FromBody]AddToRoomRequest request)
         {
             var room = await RoomDataLayer.AddUserToRoomAsync(id, request.User);
@@ -52,6 +56,7 @@ namespace Safehaus.IntranetGaming.Controllers
         }
 
         [HttpDelete]
+        [Route("{id}")]
         public async Task<IHttpActionResult> Delete(string id)
         {
             var deleteSuccess = await RoomDataLayer.DeleteRoomAsync(id);

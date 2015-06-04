@@ -11,7 +11,7 @@ using Safehaus.IntranetGaming.DataLayer;
 
 namespace Safehaus.IntranetGaming.Controllers
 {
-    [RoutePrefix("rounds/{id}")]
+    [RoutePrefix("api/rounds/{id}")]
     public class RoundController : ApiController
     {
         private IGameDataLayer GameDL;
@@ -34,7 +34,7 @@ namespace Safehaus.IntranetGaming.Controllers
         }
 
         [HttpGet]
-        [Route("answer")]
+        [Route("answers")]
         public async Task<IHttpActionResult> GetAnswers(string id)
         {
             var game = await GameDL.GetGameAsync(id);
@@ -42,7 +42,7 @@ namespace Safehaus.IntranetGaming.Controllers
             {
                 return NotFound();
             }
-            var roundDetails = 
+            return Ok();
         }
     }
 }

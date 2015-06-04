@@ -16,11 +16,10 @@ namespace Safehaus.IntranetGaming.Contract.Fibbage.Model
         {
             QuestionId = id;
             QuestionString = questionString;
-            CorrectAnswer = new Answer()
+            CorrectAnswer = new Answer(User.ComputerUser)
             {
                 AnswerValue = correctAnswer,
                 RoomId = String.Empty,
-                UserId = Guid.Empty
             };
         }
     }

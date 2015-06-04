@@ -36,17 +36,17 @@ namespace Safehaus.IntranetGaming.Contract.Fibbage.Model
 
         public IEnumerable<string> GetUsersNamesAnsered()
         {
-            return Answers.Select(e => e.UserName);
+            return Answers.Select(e => e.User.UserName);
         }
 
         public bool HasUserAnswered(User user)
         {
-            return Answers.FirstOrDefault(a => a.UserId == user.UserId) == null;
+            return Answers.Any(a => a.User.UserId == user.UserId);
         }
 
         public void AddAnswer(Answer answer)
         {
-            var existingAnswer = Answers.FirstOrDefault(a => a.UserId == answer.UserId);
+            var existingAnswer = Answers.FirstOrDefault(a => a.User.UserId == answer.User.UserId);
             if (existingAnswer == null)
             {
                 Answers.Add(answer);

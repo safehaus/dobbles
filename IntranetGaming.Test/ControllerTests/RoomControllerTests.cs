@@ -10,14 +10,14 @@ using Safehaus.IntranetGaming.Setup;
 namespace Safehaus.IntranetGaming.Test.ControllerTests
 {
     [TestFixture()]
-    public class RoomControllerTests
+    public class RoundControllerTests
     {
         [Test()]
-        public async Task TestCreateRoom()
+        public async Task TestCreateRound()
         {
             using (var server = TestServer.Create((builder) => new Startup().Configuration(builder, false)))
             {
-                var response = await server.HttpClient.PutAsync("/api/room/", new StringContent(String.Empty));
+                var response = await server.HttpClient.GetAsync("/api/rounds/ABCD/guesses");
                 response.EnsureSuccessStatusCode();
 
                 var roomDetails = await response.Content.ReadAsAsync<RoomDetails>();
