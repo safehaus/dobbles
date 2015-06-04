@@ -24,7 +24,13 @@ var Fibbage = React.createClass({
 
   getInitialState: function () {
     var handleAllResponsesHere = function () {
-      console.log('all responses here');
+      this.setState({
+        screen: ChooseAnswer,
+        props: {
+          // TODO: get from service
+          answers: [api.data.answer]
+        }
+      });
     }.bind(this);
 
     var handleFib = function () {
@@ -106,7 +112,7 @@ var WaitingForPlayers = React.createClass({
       <div>
         <h2>Waiting for players</h2>
         <p>{this.state.playerCount} joined</p>
-        <button onClick={this.props.onEveryoneHere}>Everyone's here</button>
+        <button onClick={this.props.onEveryoneHere}>Everyone is here</button>
       </div>
     );
   }
@@ -161,6 +167,24 @@ var WaitingForFibs = React.createClass({
       <div>
         <h2>Waiting for everyone to answer</h2>
         {playersAnswered}
+      </div>
+    );
+  }
+});
+
+var ChooseAnswer = React.createClass({
+  propTypes: {
+    answers: React.PropTypes.arrayOf(React.PropTypes.string)
+  },
+
+  render: function () {
+    var answers = this.props.answers.map(function (answer) {
+      return <button>{answer}</button>;
+    });
+    return (
+      <div>
+        <h2>Choose an answer</h2>
+        {answers}
       </div>
     );
   }
