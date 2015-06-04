@@ -1,0 +1,14 @@
+﻿body {
+  max-width: 320px;
+  font-family: sans-serif;
+}
+
+h2 {
+  font-size: 14pt;
+}
+
+input[type=text] {
+  display: block;
+  width: 100%;
+  margin: 0.5em 0;
+}

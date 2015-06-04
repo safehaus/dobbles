@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Dobbles</title>
+</head>
+<body>
+    <h1>Echo Client</h1>
+    Press enter to send:
+    <form id="f">
+        <input type="text" id="send">
+    </form>
+    <p>Data received:</p>
+    <pre id="receive"></pre>
+    <script>
+        var ws = new WebSocket('ws://' + location.hostname + ':8081');
+        ws.onopen = function (e) {
+          var userIdRequest = {};
+          ws.send(JSON.stringify(userIdRequest));
+        }
+
+        ws.onmessage = function (e) {
+            receive.innerHTML += (e.data + '\n');
+        };
+
+        ws.onclose = function (e) {
+            receive.innerHTML += 'Connection closed';
+        }
+
+        f.onsubmit = function (e) {
+            e.preventDefault();
+            ws.send(send.value);
+            send.value = '';
+        };
+    </script>
+</body>
+</html>
