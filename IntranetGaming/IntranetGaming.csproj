@@ -127,6 +127,9 @@
     <Content Include="Web\assets\js\app.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Web\assets\css\style.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Contract\Contract.csproj">
@@ -159,5 +162,6 @@
   <ItemGroup>
     <Folder Include="Web\assets\" />
     <Folder Include="Web\assets\js\" />
+    <Folder Include="Web\assets\css\" />
   </ItemGroup>
 </Project>
