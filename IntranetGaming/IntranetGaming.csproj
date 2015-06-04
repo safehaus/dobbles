@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\RoundController.cs" />
     <Compile Include="DataLayer\IGameDataLayer.cs" />
     <Compile Include="DataLayer\InMemory\GameInMemoryDataLayer.cs" />
     <Compile Include="DataLayer\InMemory\RoomInMemoryDataLayer.cs" />

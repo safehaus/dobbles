@@ -31,7 +31,7 @@ namespace Safehaus.IntranetGaming.DataLayer.InMemory
             return Games[roomId];
         }
 
-        public async Task<Game> GetGame(string roomId)
+        public async Task<Game> GetGameAsync(string roomId)
         {
             if (!Games.ContainsKey(roomId))
             {

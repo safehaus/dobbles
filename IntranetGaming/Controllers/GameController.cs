@@ -28,7 +28,7 @@ namespace Safehaus.IntranetGaming.Controllers
         {
             if (Games.ContainsKey(id))
             {
-                return Ok(await GameDataLayer.GetGame(id));
+                return Ok(await GameDataLayer.GetGameAsync(id));
             }
             return NotFound();
         }

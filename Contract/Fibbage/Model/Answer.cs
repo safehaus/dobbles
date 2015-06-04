@@ -6,11 +6,22 @@ using System.Threading.Tasks;
 
 namespace Safehaus.IntranetGaming.Contract.Fibbage.Model
 {
+    public class AnswerMetadata
+    {
+        public Guid Id { get; set; }
+        public string AnswerValue { get; set; }
+    }
+
     public class Answer
     {
+        public Guid Id { get; private set; }
         public string AnswerValue { get; set; }
-        public Guid UserId { get; set; }
-        public string UserName { get; set; }
+        public User User { get; set; }
         public string RoomId { get; set; }
+
+        public Answer(User user)
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }

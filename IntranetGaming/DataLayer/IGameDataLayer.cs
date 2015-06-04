@@ -10,6 +10,6 @@ namespace Safehaus.IntranetGaming.DataLayer
     public interface IGameDataLayer
     {
         Task<Game> StartNewGameAsync(string roomId);
-        Task<Game> GetGame(string roomId);
+        Task<Game> GetGameAsync(string roomId);
     }
 }

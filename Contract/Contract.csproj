@@ -69,7 +69,7 @@
     <Compile Include="Shared\AddToRoomRequest.cs" />
     <Compile Include="Fibbage\Requests\CreateAnswerRequest.cs" />
     <Compile Include="Fibbage\Responses\ChooseAnswerPhaseDetails.cs" />
-    <Compile Include="Fibbage\Responses\CreateAnswerPhaseDetails.cs" />
+    <Compile Include="Fibbage\Responses\GuessRoundResponse.cs" />
     <Compile Include="Fibbage\Responses\RoomDetails.cs" />
     <Compile Include="Fibbage\Utilities\StringUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

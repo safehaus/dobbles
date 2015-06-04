@@ -15,6 +15,7 @@ namespace Safehaus.IntranetGaming.DataLayer.InMemory
         public async Task<Room> CreateRoomAsync()
         {
             var newRoom = new Room();
+            Rooms.Add(newRoom.RoomId, newRoom);
             return await Task.FromResult(newRoom);
         }
 

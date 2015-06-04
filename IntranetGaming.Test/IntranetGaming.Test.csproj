@@ -72,6 +72,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ControllerTests\RoomControllerTests.cs" />
+    <Compile Include="GameLogicTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

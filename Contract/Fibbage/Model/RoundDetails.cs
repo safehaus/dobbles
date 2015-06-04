@@ -53,13 +53,13 @@ namespace Safehaus.IntranetGaming.Contract.Fibbage.Model
             }
         }
 
-        public IEnumerable<string> GetAnswers()
+        public IEnumerable<Answer> GetAnswers()
         {
             if (!IsGuessPhaseFinished())
             {
-                return new List<string>();
+                return new List<Answer>();
             }
-            var results = Answers.Select(e => e.AnswerValue).ToList();
+            var results = Answers.ToList();
             results.Add(CurrentQuestion.CorrectAnswer);
             return results;
         }

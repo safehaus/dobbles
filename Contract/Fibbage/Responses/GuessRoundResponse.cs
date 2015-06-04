@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Safehaus.IntranetGaming.Contract.Fibbage.Responses
 {
-    public class CreateAnswerPhaseDetails
+    public class GuessRoundResponse
     {
-        public List<Guid> UserNamesAnswered { get; set; }
+        public List<string> UserNamesAnswered { get; set; }
         public string Question { get; set; }
 
-        public CreateAnswerPhaseDetails()
+        public GuessRoundResponse()
         {
-            UserNamesAnswered = new List<Guid>();
+            UserNamesAnswered = new List<string>();
         }
     }
 }
